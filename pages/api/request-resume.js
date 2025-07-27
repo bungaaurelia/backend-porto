@@ -1,10 +1,16 @@
 import supabase from "@/utils/supabase";
+import Cors from 'cors';
+import initMiddleware from '@/utils/initMiddleware';
+
+const cors = initMiddleware(
+  Cors({
+    origin: 'https://bunga-portofolio.vercel.app',
+    methods: ['GET', 'POST'],
+  })
+);
 
 export default async function handler(req, res) {
-  // Izinkan CORS selama dev (opsional)
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  await cors(req, res);
 
   if (req.method === "OPTIONS") return res.status(200).end();
 
