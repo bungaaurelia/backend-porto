@@ -4,7 +4,7 @@ import initMiddleware from '@/utils/initMiddleware';
 
 const cors = initMiddleware(
   Cors({
-    origin: 'https://bunga-portofolio.vercel.app',
+    origin: 'https://bungaurelians.vercel.app',
     methods: ['GET', 'POST'],
   })
 );
